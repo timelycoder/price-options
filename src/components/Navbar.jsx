@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "./link/Link";
+// import { FaBeer } from "react-icons/fa";
+import { RiMenu2Line } from "react-icons/ri";
+import { MdClose } from "react-icons/md";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const routes = [
     { id: 1, path: "/", name: "Home" },
     { id: 2, path: "/about", name: "About" },
@@ -13,6 +17,9 @@ const Navbar = () => {
 
   return (
     <nav>
+      <div className="md:hidden text-3xl" onClick={() => setOpen(!open)}>
+        {open === true ? <MdClose></MdClose> : <RiMenu2Line />}
+      </div>
       <ul className="md:flex">
         {routes.map((route) => (
           <Link key={route.id} route={route}></Link>
